@@ -1,14 +1,18 @@
 # Spotiserver
 
+## Client
 ![I love Arctic Monkeys](http://i.imgur.com/sZcWMtn.png)
 
-Spotiserver (I really need to think of a better name) lets you remotely control Spotify running on a Mac.
+## Server
+![](http://i.imgur.com/xAVcMIm.png)
+
+Spotiserver (I really need to think of a better name) lets you remotely control Spotify running on a Mac from any web browser in the same network.
 
 ## Tell me more
 
 Where I work, we have a Mac Mini in the corner running Spotify. Originally whenever we wanted to change the song, pause it, or whatever, we'd need to keep getting up. With this, we can do it remotely. Now you can too!
 
-On a technical level, it's built with NodeJS and Applescript, and all client server communication goes through WebSockets.
+On a technical level, it's built with nw.js and Applescript, and all client server communication goes through WebSockets.
 
 ## Why's it Mac only?
 
@@ -16,15 +20,9 @@ Because it uses Applescript to pass the commands through to Spotify. You can use
 
 ## Getting started
 
-Clone the repo, then run `npm install`, followed by `node app`. If everything's gone to plan, the server will now be running.
+Clone the repo, run `npm install`, then use nw.js to run the app (see [this nw.js quick start guide](https://github.com/nwjs/nw.js/blob/master/README.md) for how to do that. If everything's gone to plan, the server will start and a window like the 'server' one above will pop open.
 
-Go to `http://localhost:7428` in a browser to see the remote. It probably looks massive and oversized. That's because it's designed to run in a small window you can leave in the corner of your screen. So, either resize the window, or even better, spin it off into a standalone application using [Fluid](http://fluidapp.com/). Then you'll have a nice little standalone window that looks like the image at the top of this readme.
-
-To use the remote from other devices in your network, just get [the internal IP address](http://osxdaily.com/2010/08/08/lan-ip-address-mac/) of the machine this is running on, and go to `http://<ip_address>:7428`. It works great on iOS and Android too.
-
-## Future plans
-
-Ideally, I'd like to make this a little more consumer focused and just have a Mac app that you run in the background on the server, and then an app you can install on other machines that'll function as remotes. I'll try and get around to doing that sometime.
+Go to the address shown in the window in a browser to see the remote. It probably looks massive and oversized. That's because it's designed to run in a small window you can leave in the corner of your screen. So, either resize the window, or even better, spin it off into a standalone application using [Fluid](http://fluidapp.com/). Then you'll have a nice little standalone window that looks like the image at the top of this readme. It works great on iOS and Android too.
 
 ## Credits
 
