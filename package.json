@@ -1,0 +1,14 @@
+{
+  "name": "spotiserver",
+  "description": "Control Spotify on OS X remotely",
+  "author": "Shaun Donnelly <shaundonnelly@gmail.com>",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "body-parser": "*",
+    "express": "*",
+    "socket.io": "^1.2.1"
+  }
+}

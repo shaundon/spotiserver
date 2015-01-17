@@ -1,0 +1,140 @@
+::-webkit-input-placeholder {
+    color: rgba(0,0,0,.5);
+}
+
+:-moz-placeholder { /* Firefox 18- */
+    color: rgba(0,0,0,.5)
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+    color: rgba(0,0,0,.5)
+}
+
+:-ms-input-placeholder {
+    color: rgba(0,0,0,.5)
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: -webkit-linear-gradient(90deg, #134E5E 10%, #71B280 90%); /* Chrome 10+, Saf5.1+ */
+    background:    -moz-linear-gradient(90deg, #134E5E 10%, #71B280 90%); /* FF3.6+ */
+    background:     -ms-linear-gradient(90deg, #134E5E 10%, #71B280 90%); /* IE10 */
+    background:      -o-linear-gradient(90deg, #134E5E 10%, #71B280 90%); /* Opera 11.10+ */
+    background:         linear-gradient(90deg, #134E5E 10%, #71B280 90%); /* W3C */
+    color: rgba(255,255,255,.9);
+    font-family: Helvetica, Arial;
+    margin: 50px auto;
+    padding-bottom: 50px;
+    width: 75%;
+}
+
+a {
+    color: inherit;
+}
+
+button {
+    border: none;
+    background: rgba(0,0,0,.2);
+    border-radius: 5px;
+    color: rgba(255,255,255,.7);
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px;
+    -moz-transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+    -webkit-transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+button:hover {
+    background:rgba(255,255,255,.5);
+    color: rgba(0,0,0,.7);
+}
+
+button.media {
+    border-radius: 10em;
+    height: 100px;
+    font-size: 40px;
+    margin: 10px;
+    width: 100px;
+}
+
+button.after-input {
+    width: 20%;
+}
+
+.top-padded {
+    margin-top: 30px;
+}
+
+@media (max-width: 600px) {
+
+    body {
+        font-size: 75%;
+        margin: 20px auto;
+    }
+
+    button.media {
+        border-radius: 10em;
+        height: 75px;
+        font-size: 30px;
+        margin: 5px;
+        width: 75px;
+    }
+
+    input {
+        display: block;
+        margin-bottom: 5px;
+        width: 100% !important;
+    }
+
+    button.after-input {
+        display: block;
+        width: 100%;
+    }
+
+    .rd-small {
+        display: block;
+    }
+}
+
+input {
+    background: rgba(255,255,255,.5);
+    border: none;
+    border-radius: 5px;
+    color: rgba(0,0,0,.7);
+    font-size: 16px;
+    outline: none;
+    padding: 10px;
+    width: 40%;
+    -moz-transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+    -webkit-transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+input:not([type=range]):focus {
+    box-shadow: 0 0 5px rgba(255,255,255,.5);
+}
+
+.centered {
+    text-align: center;
+}
+
+.round-buttons {
+    margin-bottom: 20px;
+}
+
+.spotify-info-area {
+    font-family: Helvetica Neue, Helvetica, Arial;
+    line-height: 26px;
+    list-style: none;
+    text-align: left;
+}
+
+.spotify-info-area i {
+    margin-right: 10px;
+}
+
+.spotify-info-area a {
+    text-decoration: none;
+}
