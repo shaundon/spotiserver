@@ -1,3 +1,12 @@
+on escape_quotes(string_to_escape)
+  set AppleScript's text item delimiters to the "\""
+  set the item_list to every text item of string_to_escape
+  set AppleScript's text item delimiters to the "\\\""
+  set string_to_escape to the item_list as string
+  set AppleScript's text item delimiters to ""
+  return string_to_escape
+end escape_quotes
+
 on run argv
 	if count of argv is equal to 0 then
 		set msg to "Use the following commands:\n"
@@ -125,9 +134,9 @@ on run argv
 				set nowAt to nM as text & "min " & nS as text & "s"
 
 				set info to "{"
-				set info to info & "\"artist\":\"" & myArtist & "\","
-				set info to info & "\"track\":\"" & myTrack & "\","
-				set info to info & "\"album\":\"" & myAlbum & "\","
+				set info to info & "\"artist\":\"" & my escape_quotes(myArtist) & "\","
+				set info to info & "\"track\":\"" & my escape_quotes(myTrack) & "\","
+				set info to info & "\"album\":\"" & my escape_quotes(myAlbum) & "\","
 				set info to info & "\"uri\":\"" & spotify url of current track & "\","
 				set info to info & "\"duration\":\"" & myTime & "\","
 				set info to info & "\"now-at\":\"" & nowAt & "\","

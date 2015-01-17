@@ -7,18 +7,20 @@
     <meta name="format-detection" content="telephone=no">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
+    <script src="scripts/fastclick.js"></script>
     <script src="scripts/socket.io-1.2.1.js"></script>
     <script src="scripts/index.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link href="css/index.css" rel="stylesheet">
     <meta charset="UTF-8">
-    <title>Spotify Control</title>
+    <title>Spotify Remote</title>
 </head>
 <body>
-    <section class="centered">
 
-        <ul class="spotify-info-area">
+    <section>
+        <ul class="info-area">
             <li>
                 <i class="fa fa-music"></i> <span class="current-track"></span>
             </li>
@@ -26,30 +28,26 @@
                 <i class="fa fa-user"></i> <span class="current-artist"></span>
             </li>
             <li>
-                <i class="fa fa-book"></i> <span class="current-album"></span>
-            </li>
-            <li>
-                <i class="fa fa-link"></i> <span class="current-uri"></span>
+                <i class="fa fa-dot-circle-o"></i> <span class="current-album"></span>
             </li>
         </ul>
-
-        <div class="round-buttons">
-            <button class="media" onclick="spotify.play()"><i class="fa fa-play"></i></button>
-            <button class="media" onclick="spotify.pause()"><i class="fa fa-pause"></i></button>
-            <button class="media" onclick="spotify.previous()"><i class="fa fa-step-backward"></i></button>
-            <button class="media" onclick="spotify.next()"><i class="fa fa-step-forward"></i></button>
-        </div>
-        <div>
-            <i class="fa fa-volume"></i>
-            <input id="volume" type="range" min="0" max="100" step="1" onchange="spotify.volume(this.value)">
-            <i class="fa fa-volume-up"></i>
-        </div>
-        <div>
-            <input type="url" placeholder="Paste in a Spotify URI" id="spotify-input-field">
-            <button class="after-input" onclick="spotify.song(document.getElementById('spotify-input-field').value)" data-toggle="popover" data-content="Right click on a song and select 'Copy Spotify URI' to get the URI.">Play</button>
-        </div>
-
     </section>
+
+    <section class="volume-controls">
+        <span><i class="fa fa-volume-off"></i></span>
+        <input id="volume" type="range" min="0" max="100" step="1" onchange="spotify.volume(this.value)">
+        <span><i class="fa fa-volume-up"></i></span>
+    </section>
+
+    <section class="player-controls">
+        <button class="player-control" onclick="spotify.previous()"><i class="fa fa-step-backward"></i></button>
+        <button class="player-control play-pause-toggle" onclick="spotify.togglePlay()"><i class="fa fa-pause"></i></button>
+        <button class="player-control" onclick="spotify.next()"><i class="fa fa-step-forward"></i></button>
+    </section>
+
+    <div id="no-connection-message">
+        Spotify Unavailable
+    </div>
 
 </body>
 </html>
