@@ -1,0 +1,23 @@
+body {
+    background: #333;
+    color: #ccc;
+    font-family: Montserrat, Helvetica, Arial;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+h1 {
+    color: #84bd00;
+}
+
+section {
+    padding: 10px;
+}
+
+.code {
+    background: #eee;
+    color: #d44950;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    padding: 10px 0;
+}

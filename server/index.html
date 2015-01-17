@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Spotify Server</title>
+
+        <!-- Runs the server side application. -->
+        <script type="text/javascript" src="../app.js"></script>
+        <link href="index.css" rel="stylesheet"/>
+        <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+        <script>
+            // get the system platform using node.js
+            var os = require('os');
+        </script>
+    </head>
+    <body>
+        <section>
+            <h1>Spotify Server Is Running.</h1>
+            <p>
+                You can now remotely control Spotify from any device on this network that has a web browser,
+                by going to:
+            </p>
+        </section>
+        <p class="code">
+            http://<script>document.write(os.hostname().toLocaleLowerCase())</script>:7768
+        </p>
+    </body>
+</html>
