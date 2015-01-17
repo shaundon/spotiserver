@@ -2,7 +2,7 @@
   "name": "spotiserver",
   "description": "Control Spotify on OS X remotely",
   "author": "Shaun Donnelly <shaundonnelly@gmail.com>",
-  "main": "server/index.html",
+  "main": "gui/index.html",
   "version": "1.0.0",
   "window": {
     "toolbar": false,
