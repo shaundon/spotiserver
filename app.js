@@ -12,7 +12,7 @@ var timer = false;
 checkIfSpotifyStateHasChanged();
 
 app.use(bodyParser());
-app.use('/', express.static(__dirname + '/public'));
+app.use('/', express.static(global.__dirname + '/../public'));
 
 
 io.on('connection', function(socket) {
@@ -82,6 +82,6 @@ function makeSpotifyRequest(command, callback) {
     });
 }
 
-http.listen(7428, function() {
+http.listen(7768, function() {
     console.log('Spotify server is running!');
 });

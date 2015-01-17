@@ -2,13 +2,18 @@
   "name": "spotiserver",
   "description": "Control Spotify on OS X remotely",
   "author": "Shaun Donnelly <shaundonnelly@gmail.com>",
-  "main": "app.js",
-  "scripts": {
-    "start": "node app.js"
+  "main": "server/index.html",
+  "version": "1.0.0",
+  "window": {
+    "toolbar": false,
+    "width": 400,
+    "height": 250
   },
   "dependencies": {
     "body-parser": "*",
     "express": "*",
+    "grunt": "^0.4.5",
+    "grunt-node-webkit-builder": "^1.0.0",
     "socket.io": "^1.2.1"
   }
 }
