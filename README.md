@@ -8,7 +8,7 @@ Spotiserver (I really need to think of a better name) lets you remotely control 
 
 Where I work, we have a Mac Mini in the corner running Spotify. Originally whenever we wanted to change the song, pause it, or whatever, we'd need to keep getting up. With this, we can do it remotely. Now you can too!
 
-On a technical level, it's build with NodeJS and Applescript, and all client server communication goes through WebSockets.
+On a technical level, it's built with NodeJS and Applescript, and all client server communication goes through WebSockets.
 
 ## Why's it Mac only?
 
