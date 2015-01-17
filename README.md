@@ -20,7 +20,7 @@ Clone the repo, then run `npm install`, followed by `node app`. If everything's 
 
 Go to `http://localhost:7428` in a browser to see the remote. It probably looks massive and oversized. That's because it's designed to run in a small window you can leave in the corner of your screen. So, either resize the window, or even better, spin it off into a standalone application using [Fluid](http://fluidapp.com/). Then you'll have a nice little standalone window that looks like the image at the top of this readme.
 
-To use the remote from other devices in your network, just get [the internal IP] address(http://osxdaily.com/2010/08/08/lan-ip-address-mac/) of the machine this is running on, and go to `http://<ip_address>:7428`. It works great on iOS and Android too.
+To use the remote from other devices in your network, just get [the internal IP address](http://osxdaily.com/2010/08/08/lan-ip-address-mac/) of the machine this is running on, and go to `http://<ip_address>:7428`. It works great on iOS and Android too.
 
 ## Future plans
 
