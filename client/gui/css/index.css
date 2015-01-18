@@ -1,0 +1,66 @@
+body {
+    background: #333;
+    color: #ccc;
+    font-family: Montserrat, Helvetica, Arial;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    text-align: center;
+}
+
+h1 {
+    color: #84bd00;
+}
+
+section {
+    opacity: 0;
+    position: absolute;
+    transition: opacity 0.2s linear;
+    width: 100%;
+    z-index: 0;
+}
+
+section.visible {
+    opacity: 1;
+    z-index: 1;
+}
+
+section.visible iframe {
+    display: block;
+}
+
+.loader {
+    font-size: 28px;
+}
+
+iframe {
+    border: none;
+    display: none;
+    height: 100%;
+    left: 0;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+}
+
+.choices {
+    margin: 0;
+    max-height: 130px;
+    overflow-y: auto;
+    padding: 0;
+}
+
+.choices li {
+    background: rgba(255,255,255,.2);
+    cursor: pointer;
+    margin-bottom: 5px;
+    padding: 5px;
+    transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.choices li:hover {
+    background: #84bd00;
+    color: #333;
+}

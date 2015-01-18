@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Spotify Remote</title>
+        <script type="text/javascript" src="scripts/app.js"></script>
+        <link href="css/font-awesome.min.css" rel="stylesheet"/>
+        <link href="css/index.css" rel="stylesheet"/>
+        <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+        <h1>Spotify Remote</h1>
+        <section class="looking-section visible">
+            <p>Looking for Spotify servers..</p>
+            <p>
+                <i class="loader fa fa-circle-o-notch fa-spin"></i>
+            </p>
+        </section>
+
+        <section class="choice-section">
+            <p>Multiple Spotify servers were found. Please choose one.</p>
+            <ul class="choices"></ul>
+        </section>
+
+        <section class="no-server-section">
+            <p>No Spotify servers could be found.</p>
+            <p>Check that the server app is running on the computer you wish to control.</p>
+        </section>
+
+        <section class="remote-section">
+            <iframe id="remote-iframe" src=""></iframe>
+        </section>
+    </body>
+</html>
