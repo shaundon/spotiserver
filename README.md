@@ -18,11 +18,15 @@ On a technical level, it's built with nw.js and Applescript, and all client serv
 
 Because it uses Applescript to pass the commands through to Spotify. You can use any device with a web browser as a remote though, just make sure you use a Mac for the server part.
 
-## Getting started
+## Getting Started
 
 You've got two apps here - *client* and *server*. You run *server* on the Mac with Spotify that you want to control, and *client* on machines you want to use as remotes. You can also access the remote in a web browser.
 
-### Running the server
+### Download
+
+You can download standalone, prebuilt apps from [this link](http://sdonnelly.co.uk/downloads/spotiserver.zip). You'll find both the client and server apps in there. If everything goes to plan, it'll Just Work. If not, let's try compiling it ourselves! Read on..
+
+### Compiling and running it yourself
 
 On the machine you want to control (the Mac with Spotify):
 
@@ -32,7 +36,7 @@ npm install
 nw .
 ```
 
-### Running the client
+And on the machines you want to use as remotes:
 
 ```
 cd client
