@@ -50,6 +50,10 @@ As the code samples show, you'll need nw.js to run the app (see [this nw.js quic
 
 You may be wondering what the point of the client application is, when you can just go to the server in a web browser and control it that way. The difference is that the client application scans the network for a machine running the server, and then connects to it automatically, no setup required. Also, the web based version works great on devices that can't run the client app, like PCs, iOS, Android, and so on.
 
+## Issues
+
+There are a couple of known issues, check the issues section of this repo.
+
 ## Credits
 
 The AppleScript used to control Spotify was originally [this file](https://github.com/dronir/SpotifyControl). I changed it to return JSON instead of text for the `info` command, and I added a function to escape that output, which I took from [node-spotify-applescript](https://github.com/andrehaveman/spotify-node-applescript). I'm also using [Font Awesome](https://github.com/FortAwesome/Font-Awesome) for icons, [fastclick](https://github.com/ftlabs/fastclick) for elimating touch delay on mobile and [socket.io](http://socket.io/) for client-server communication.
