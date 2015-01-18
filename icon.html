@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Icon</title>
+        <style>
+            body {
+                background: #666;
+            }
+            .icon {
+                background: #77bc74; /* Old browsers */
+                background: -moz-radial-gradient(center, ellipse cover,  #77bc74 0%, #5abe57 100%); /* FF3.6+ */
+                background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#77bc74), color-stop(100%,#5abe57)); /* Chrome,Safari4+ */
+                background: -webkit-radial-gradient(center, ellipse cover,  #77bc74 0%,#5abe57 100%); /* Chrome10+,Safari5.1+ */
+                background: -o-radial-gradient(center, ellipse cover,  #77bc74 0%,#5abe57 100%); /* Opera 12+ */
+                background: -ms-radial-gradient(center, ellipse cover,  #77bc74 0%,#5abe57 100%); /* IE10+ */
+                background: radial-gradient(ellipse at center,  #77bc74 0%,#5abe57 100%); /* W3C */
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#77bc74', endColorstr='#5abe57',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+                border: 30px solid #f6f6f6;
+                border-radius: 50%;
+                height: 500px;
+                left: 50%;
+                margin-left: -250px;
+                margin-top: -250px;
+                overflow: hidden;
+                position: absolute;
+                top: 47%;
+                width: 500px;
+            }
+
+            .lines {
+                left: 38%;
+                height: 50%;
+                margin-left: -60%;
+                position: relative;
+                top: 78%;
+                transform: rotate(90deg);
+
+            }
+
+            .line {
+                background: rgba(255,255,255,.9);
+                border-radius: 4em;
+                box-shadow: 0 0 5px rgba(0,0,0,.2);
+                position: absolute;
+                height: 130%;
+                width: 7%;
+            }
+
+            .line.one {
+                left: 0;
+            }
+
+            .line.two {
+                left: 100px;
+            }
+
+            .line.three {
+                left: 200px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="icon">
+            <div class="lines">
+                <div class="line one"></div>
+                <div class="line two"></div>
+                <div class="line three"></div>
+            </div>
+        </div>
+    </body>
+</html>
