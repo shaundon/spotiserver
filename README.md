@@ -4,7 +4,7 @@
 ![I love Arctic Monkeys](http://i.imgur.com/sZcWMtn.png)
 
 ## Server
-![](http://i.imgur.com/xAVcMIm.png)
+![](http://i.imgur.com/wf92iDs.png)
 
 Spotiserver (I really need to think of a better name) lets you remotely control Spotify running on a Mac from any web browser in the same network.
 
@@ -20,9 +20,31 @@ Because it uses Applescript to pass the commands through to Spotify. You can use
 
 ## Getting started
 
-Clone the repo, then in the `server` directory, run `npm install`, then use nw.js to run the app (see [this nw.js quick start guide](https://github.com/nwjs/nw.js/blob/master/README.md) for how to do that. If everything's gone to plan, the server will start and a window like the 'server' one above will pop open.
+You've got two apps here - *client* and *server*. You run *server* on the Mac with Spotify that you want to control, and *client* on machines you want to use as remotes. You can also access the remote in a web browser.
 
-Go to the address shown in the window in a browser to see the remote. It probably looks massive and oversized. That's because it's designed to run in a small window you can leave in the corner of your screen. So, either resize the window, or even better, spin it off into a standalone application using [Fluid](http://fluidapp.com/). Then you'll have a nice little standalone window that looks like the image at the top of this readme. It works great on iOS and Android too.
+### Running the server
+
+On the machine you want to control (the Mac with Spotify):
+
+```
+cd server
+npm install
+nw .
+```
+
+### Running the client
+
+```
+cd client
+npm install
+nw .
+```
+
+As the code samples show, you'll need nw.js to run the app (see [this nw.js quick start guide](https://github.com/nwjs/nw.js/blob/master/README.md) for how to do that. If everything's gone to plan, the apps will start and windows like the images above will pop open.
+
+## Client app vs website
+
+You may be wondering what the point of the client application is, when you can just go to the server in a web browser and control it that way. The difference is that the client application scans the network for a machine running the server, and then connects to it automatically, no setup required. Also, the web based version works great on devices that can't run the client app, like PCs, iOS, Android, and so on.
 
 ## Credits
 
