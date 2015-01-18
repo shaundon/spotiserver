@@ -5,9 +5,10 @@ module.exports = function(grunt) {
     grunt.initConfig({
         nodewebkit: {
             options: {
+                appName: 'Spotify Remote',
                 platforms: ['osx'],
                 buildDir: './builds',
-                macIcns: 'icon.icns',
+                macIcns: 'client.icns',
                 macZip: false,
                 files: [ "package.json",  "./**/*"]
             },
