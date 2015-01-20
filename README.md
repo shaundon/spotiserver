@@ -29,10 +29,6 @@ Because it uses Applescript to pass the commands through to Spotify. You can use
 
 You've got two apps here - *client* and *server*. You run *server* on the Mac with Spotify that you want to control, and *client* on machines you want to use as remotes. You can also access the remote in a web browser.
 
-### Download
-
-You can download standalone, prebuilt apps from [this link](http://sdonnelly.co.uk/downloads/spotiserver.zip). You'll find both the client and server apps in there. If everything goes to plan, it'll Just Work. If not, let's try compiling it ourselves! Read on..
-
 ### Compiling and running it yourself
 
 Ensure that `nw-gyp` is installed on your machine globally:
