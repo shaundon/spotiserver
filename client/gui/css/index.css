@@ -10,6 +10,12 @@ body {
 
 h1 {
     color: #84bd00;
+    font-size: 150%;
+    margin-bottom: 5px;
+}
+
+p {
+    padding: 0 5px;
 }
 
 section {

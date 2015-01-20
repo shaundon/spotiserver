@@ -11,6 +11,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
     socket.on('spotify.info', function(json) {
         spotify.updatePlayerInfo(json);
     });
+    socket.on('spotify.artwork', function(artworkUrl) {
+        document.body.style.backgroundImage = "url('" + artworkUrl + "')";
+    });
 });
 
 var spotify = {

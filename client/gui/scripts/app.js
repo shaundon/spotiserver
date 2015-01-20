@@ -2,7 +2,8 @@ var mdns = require('mdns');
 var SPOTIFY_PORT = 7768;
 var foundServers = [];
 var timer = false;
-var TIMEOUT_MS = 10000;
+var TIMEOUT_MS = 2000;
+var attempts = 0;
 
 function findSpotifyServers() {
 
@@ -12,7 +13,9 @@ function findSpotifyServers() {
             console.log('Found Spotify server at http://' + service.host + ':7768');
             if (foundServers.indexOf(service.host) === -1) {
                 foundServers.push(service.host);
-                handleFoundServer();
+                if (attempts > 0) {
+                    handleFoundServer();
+                }
             }
         }
     });
@@ -21,11 +24,16 @@ function findSpotifyServers() {
 
 function handleFoundServer() {
 
-    // Cancel the timer that shows the 'none found'
-    // message.
-    clearTimeout(timer);
-
     switch (foundServers.length) {
+        case 0:
+            if (attempts < 3) {
+                attempts++;
+                continueLooking();
+            }
+            else {
+                showNoServersFoundMessage();
+            }
+            break;
         case 1:
             loadRemote(foundServers[0]);
             break;
@@ -59,20 +67,22 @@ function showServerChoices(foundHosts) {
     for (var i in foundHosts) {
         choices += "<li onclick='loadRemote(\"" + foundHosts[i] + "\")'>" + foundHosts[i] + "</li>";
     }
+    document.querySelector('.looking-section').classList.remove('visible');
+    document.querySelector('.no-server-section').classList.remove('visible');
+    document.querySelector('.remote-section').classList.remove('visible');
 
-    setTimeout(function() {
-        document.querySelector('.looking-section').classList.remove('visible');
-        document.querySelector('.no-server-section').classList.remove('visible');
-        document.querySelector('.remote-section').classList.remove('visible');
+    document.querySelector('.choice-amount').innerText = foundHosts.length;
+    document.querySelector('.choice-section .choices').innerHTML = choices;
+    document.querySelector('.choice-section').classList.add('visible');
+}
 
-        document.querySelector('.choice-section .choices').innerHTML = choices;
-        document.querySelector('.choice-section').classList.add('visible');
-    }, 1000);
+function continueLooking() {
+    timer = setTimeout(function() {
+        handleFoundServer();
+    }, TIMEOUT_MS);
 }
 
 document.addEventListener("DOMContentLoaded", function() {
     findSpotifyServers();
-    timer = setTimeout(function() {
-        showNoServersFoundMessage();
-    }, TIMEOUT_MS);
+    continueLooking();
 });

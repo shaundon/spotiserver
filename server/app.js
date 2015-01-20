@@ -3,13 +3,17 @@ var exec = require('child_process').exec;
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
-var http = require('http').createServer(app);
-var io = require('socket.io')(http);
+var http = require('http');
+var httpServer = http.createServer(app);
+var io = require('socket.io')(httpServer);
 var mdns = require('mdns');
+var SpotifyWebApi = require('spotify-web-api-node');
+var spotifyWebApi = new SpotifyWebApi();
 
 var connectedUsers = 0;
 var currentSpotifyState = '';
 var timer = false;
+var albumArtCache = {};
 checkIfSpotifyStateHasChanged();
 
 app.use(bodyParser());
@@ -24,6 +28,11 @@ io.on('connection', function(socket) {
 
     // Emit the current info for the latest connected client.
     io.emit('spotify.info', currentSpotifyState);
+    if (currentSpotifyState !== '') {
+        getAlbumArt(currentSpotifyState.uri, currentSpotifyState.artist, currentSpotifyState.album, function (artwork) {
+            io.emit('spotify.artwork', artwork);
+        });
+    }
 
     // Report connection count.
     socket.on('disconnect', function() {
@@ -47,21 +56,24 @@ function checkIfSpotifyStateHasChanged() {
     makeSpotifyRequest('info', function(error, stdout, stderr) {
         if (!error) {
             try {
-                var hasChanged = false;
+                var anythingHasChanged = false;
                 var newSpotifyState = JSON.parse(stdout);
                 if (currentSpotifyState !== '') {
                     if (newSpotifyState.uri != currentSpotifyState.uri) {
-                        hasChanged = true;
+                        anythingHasChanged = true;
+                        getAlbumArt(newSpotifyState.uri, newSpotifyState.artist, newSpotifyState.album, function(artwork) {
+                            io.emit('spotify.artwork', artwork);
+                        });
                     }
                     else if (newSpotifyState.volume != currentSpotifyState.volume) {
-                        hasChanged = true;
+                        anythingHasChanged = true;
                     }
                     else if (newSpotifyState.player != currentSpotifyState.player) {
-                        hasChanged = true;
+                        anythingHasChanged = true;
                     }
                 }
                 currentSpotifyState = newSpotifyState;
-                if (hasChanged) {
+                if (anythingHasChanged) {
                     io.emit('spotify.info', currentSpotifyState);
                 }
 
@@ -76,6 +88,54 @@ function checkIfSpotifyStateHasChanged() {
     });
 }
 
+function getAlbumArt(uri, artist, album, callback) {
+
+    var cacheFormat = artist + '_' + album;
+
+    // See if it's already in the cache.
+    if (albumArtCache[cacheFormat]) {
+        callback(albumArtCache[cacheFormat]);
+    }
+    else {
+
+        uri = uri.replace('spotify:track:', '');
+
+        spotifyWebApi.getTrack(uri)
+            .then(function(data) {
+                if (data.album) {
+                    if (data.album.images) {
+                        if (data.album.images.length > 0) {
+
+                            var artwork = data.album.images[0].url || '';
+
+                            // Add to cache.
+                            if (artwork !== '') {
+                                albumArtCache[cacheFormat] = artwork;
+                            }
+
+                            // Callback.
+                            callback(artwork);
+                        }
+                    }
+                }
+            })
+            .catch(function(error) {
+                console.log('Spotify API error', error);
+                callback('');
+            })
+        ;
+    }
+}
+
+function formSpotifyAlbumArtRequest(uri) {
+    uri = uri.replace('spotify:track:', '');
+    return '/v1/tracks/' + uri;
+}
+
+function processSpotifyApiResponse(response) {
+
+}
+
 // Calls an Applescript to get the Spotify info.
 function makeSpotifyRequest(command, callback) {
     exec('osascript deps/SpotifyControl.scpt ' + command, function(error, stdout, stderr) {
@@ -83,7 +143,7 @@ function makeSpotifyRequest(command, callback) {
     });
 }
 
-http.listen(7768, function() {
+httpServer.listen(7768, function() {
     console.log('Spotify server is running!');
 
     var ad = mdns.createAdvertisement(mdns.tcp('http'), 7768);

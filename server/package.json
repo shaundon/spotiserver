@@ -14,8 +14,9 @@
     "express": "*",
     "grunt": "^0.4.5",
     "grunt-node-webkit-builder": "^1.0.0",
+    "mdns": "2.2.2",
     "socket.io": "^1.2.1",
-    "mdns": "2.2.2"
+    "spotify-web-api-node": "^1.3.5"
   },
   "scripts": {
     "postinstall": "cd node_modules/mdns && nw-gyp configure --target=0.8.6 && nw-gyp build && cd ../..",
