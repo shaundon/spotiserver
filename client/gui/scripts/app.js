@@ -1,5 +1,4 @@
-var net = require('net');
-var Socket = net.Socket;
+var mdns = require('mdns');
 var SPOTIFY_PORT = 7768;
 var foundServers = [];
 var timer = false;
@@ -7,30 +6,17 @@ var TIMEOUT_MS = 10000;
 
 function findSpotifyServers() {
 
-    function checkPort(port, host) {
-        var socket = new Socket();
-
-        // Socket connection established, port is open
-        socket.on('connect', function () {
-            foundServers.push(host);
-            handleFoundServer();
-            socket.end();
-        });
-        socket.setTimeout(1500);// If no response, assume port is not listening
-        socket.on('timeout', function () {
-            socket.destroy();
-        });
-        socket.on('error', function (exception) {});
-        socket.on('close', function (exception) {});
-        socket.connect(port, host);
-    }
-
-    var LAN = '192.168.0'; //Local area network to scan (this is rough)
-
-//scan over a range of IP addresses.
-    for (var i = 1; i <= 255; i++) {
-        checkPort(SPOTIFY_PORT, LAN + '.' + i);
-    }
+    var browser = mdns.createBrowser(mdns.tcp('http'));
+    browser.on('serviceUp', function(service) {
+        if (service.port === SPOTIFY_PORT) {
+            console.log('Found Spotify server at http://' + service.host + ':7768');
+            if (foundServers.indexOf(service.host) === -1) {
+                foundServers.push(service.host);
+                handleFoundServer();
+            }
+        }
+    });
+    browser.start();
 }
 
 function handleFoundServer() {

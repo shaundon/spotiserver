@@ -16,6 +16,10 @@
   "dependencies": {
     "grunt": "^0.4.5",
     "grunt-node-webkit-builder": "^1.0.0",
-    "net": "^1.0.2"
+    "mdns": "2.2.2"
+  },
+  "scripts": {
+    "postinstall": "cd node_modules/mdns && nw-gyp configure --target=0.8.6 && nw-gyp build && cd ../..",
+    "postupdate": "cd node_modules/mdns && nw-gyp configure --target=0.8.6 && nw-gyp build && cd ../.."
   }
 }

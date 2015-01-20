@@ -4,7 +4,7 @@
 ![I love Arctic Monkeys](http://i.imgur.com/sZcWMtn.png)
 
 ## Server
-![](http://i.imgur.com/wf92iDs.png)
+![Server](http://i.imgur.com/wf92iDs.png)
 
 Spotiserver (I really need to think of a better name) lets you remotely control Spotify running on a Mac from any web browser in the same network.
 
@@ -28,6 +28,12 @@ You can download standalone, prebuilt apps from [this link](http://sdonnelly.co.
 
 ### Compiling and running it yourself
 
+Ensure that `nw-gyp` is installed on your machine globally:
+
+```
+npm install -g nw-gyp
+```
+
 On the machine you want to control (the Mac with Spotify):
 
 ```
@@ -44,7 +50,13 @@ npm install
 nw .
 ```
 
-As the code samples show, you'll need nw.js to run the app (see [this nw.js quick start guide](https://github.com/nwjs/nw.js/blob/master/README.md) for how to do that. If everything's gone to plan, the apps will start and windows like the images above will pop open.
+As the code samples show, you'll need nw.js to run the app (see [this nw.js quick start guide](https://github.com/nwjs/nw.js/blob/master/README.md) for how to do that. 
+If everything's gone to plan, the apps will start and windows like the images above will pop open.
+
+#### Caveats
+
+Use version 0.8.6 of node-webkit (aka nw.js). The module used for zeroconf networking, [node-mdns](https://github.com/agnat/node_mdns), currently 
+won't build under the latest versions. It has to be recompiled with `nw-gyp`, which is achieved with a post install script.
 
 ## Client app vs website
 
