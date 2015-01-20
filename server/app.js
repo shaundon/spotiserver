@@ -5,6 +5,7 @@ var bodyParser = require('body-parser');
 var app = express();
 var http = require('http').createServer(app);
 var io = require('socket.io')(http);
+var mdns = require('mdns');
 
 var connectedUsers = 0;
 var currentSpotifyState = '';
@@ -84,4 +85,7 @@ function makeSpotifyRequest(command, callback) {
 
 http.listen(7768, function() {
     console.log('Spotify server is running!');
+
+    var ad = mdns.createAdvertisement(mdns.tcp('http'), 7768);
+    ad.start();
 });
