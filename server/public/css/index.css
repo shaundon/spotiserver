@@ -44,6 +44,7 @@ body:before {
     -webkit-transform: scale(5);
     -webkit-transform-origin: top left;
     -webkit-filter: blur(2px) brightness(0.8);
+    -webkit-transition: background-image 0.2s linear;
 }
 
 section {
