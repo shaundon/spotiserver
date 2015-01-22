@@ -1,16 +1,23 @@
 # Spotiserver
 
 ## Client
-![I love Arctic Monkeys](http://i.imgur.com/sZcWMtn.png)
+![Client](http://i.imgur.com/FF4Joh0.png)
 
 ## Server
-![Server](http://i.imgur.com/wf92iDs.png)
+![Server](http://i.imgur.com/PJpU7Ur.png)
+
 
 Spotiserver (I really need to think of a better name) lets you remotely control Spotify running on a Mac from any web browser in the same network.
 
 ## Tell me more
 
 Where I work, we have a Mac Mini in the corner running Spotify. Originally whenever we wanted to change the song, pause it, or whatever, we'd need to keep getting up. With this, we can do it remotely. Now you can too!
+
+### Features
+
+* Zero configuration set up - Client finds and connects to the server automatically.
+* Album artwork via Spotify Web API
+* Browser based version available too
 
 On a technical level, it's built with nw.js and Applescript, and all client server communication goes through WebSockets.
 
@@ -21,10 +28,6 @@ Because it uses Applescript to pass the commands through to Spotify. You can use
 ## Getting Started
 
 You've got two apps here - *client* and *server*. You run *server* on the Mac with Spotify that you want to control, and *client* on machines you want to use as remotes. You can also access the remote in a web browser.
-
-### Download
-
-You can download standalone, prebuilt apps from [this link](http://sdonnelly.co.uk/downloads/spotiserver.zip). You'll find both the client and server apps in there. If everything goes to plan, it'll Just Work. If not, let's try compiling it ourselves! Read on..
 
 ### Compiling and running it yourself
 
