@@ -1,3 +1,9 @@
+# IMPORTANT
+
+Applescript support is currently broken in v1.0 of Spotify for OS X, which breaks this app. Therefore, you must be using Spotify 0.9 or lower to use this. Spotify autoupdates, so you can fix it to a specific version with a bit of [hacking](http://www.wired.co.uk/news/archive/2015-03/12/how-to-downgrade-spotify).
+
+[Here's a thread on Spotify's support forum](https://community.spotify.com/t5/Help-Desktop-Linux-Mac-and/New-Mac-Update-AppleScript-support-removed/td-p/995843) detailing the problem. Spotify advise that Applescript support will return in a future update. In the event that happens, I'll amend this section.
+
 # Spotiserver
 
 ## Client
@@ -53,7 +59,7 @@ npm install
 nw .
 ```
 
-As the code samples show, you'll need nw.js to run the app (see [this nw.js quick start guide](https://github.com/nwjs/nw.js/blob/master/README.md) for how to do that. 
+As the code samples show, you'll need nw.js to run the app. See [this nw.js quick start guide](https://github.com/nwjs/nw.js/blob/master/README.md) for how to do that. 
 If everything's gone to plan, the apps will start and windows like the images above will pop open.
 
 #### Caveats
